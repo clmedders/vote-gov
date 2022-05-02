@@ -7,7 +7,7 @@
 {{ $month := index $translation.months (string (lower .Lastmod.Month)) }}
 {{ $year := index $translation.years (string .Lastmod.Year) }}
 
-  {{ $year }}年{{ $month }}月{{ $day }}日
+  {{ $year }} {{ $month }} {{ $day }}
 
 {{ else }}
 
