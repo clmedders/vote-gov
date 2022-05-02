@@ -1,3 +1,16 @@
 {{ $translation := ( index $.Site.Data.translations .Site.Language.Lang ) }}
 
-{{ .Lastmod | time.Format ":date_long" }}
+{{ $zh_hans := "zh-hans" }}
+{{ if eq .Site.Language.Lang $zh_hans }}
+
+{{ $day := index $translation.day_number (string .Lastmod.Day) }}
+{{ $month := index $translation.months (string (lower .Lastmod.Month)) }}
+{{ $year := index $translation.years (string .Lastmod.Year) }}
+
+  {{ $year }}年{{ $month }}月{{ $day }}日
+
+{{ else }}
+
+  {{ .Lastmod | time.Format ":date_long" }}
+
+{{end}}
